@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516786945312",
+    "project_id": "faishalyb-flix-id",
+    "storage_bucket": "faishalyb-flix-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516786945312:android:dd1847fc531b94671feb45",
+        "android_client_info": {
+          "package_name": "com.faishalyb.flix_id"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWMyGlVO7M5fcDY1mzGFRnH08xN_zuzDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
