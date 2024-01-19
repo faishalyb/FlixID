@@ -4,7 +4,7 @@ sealed class Result<T> {
   const Result();
 
   const factory Result.success(T value) = Success;
-  const factory Result.Failed(String message) = Failed; 
+  const factory Result.failed(String message) = Failed; 
 
   bool get isSuccess => this is Success<T>;
   bool get isFailed => this is Success<T>;
