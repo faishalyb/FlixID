@@ -22,8 +22,8 @@ class Login implements UseCase<Result<User>, LoginParams> {
       var userResult = await userRepository.getUser(uid: idResult.resultValue!);
       
       return switch (userResult) {
-        Success(value : final user) => Result.success(user),
-        Failed(: final message ) => Result.failed(message)
+        Success(value: final user) => Result.success(user),
+        Failed(:final message ) => Result.failed(message)
       };
     } else { 
       return Result.failed(idResult.errorMessage!);
