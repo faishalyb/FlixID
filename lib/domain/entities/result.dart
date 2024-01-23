@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 sealed class Result<T> {
   const Result();
 
