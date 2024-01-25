@@ -20,7 +20,7 @@ class DummyUserRepository implements UserRepository {
   }
 
   @override
-  Future<Result<User>> getUserBalance({required String uid}) {
+  Future<Result<int>> getUserBalance({required String uid}) {
     // TODO: implement getUserBalance
     throw UnimplementedError();
   }

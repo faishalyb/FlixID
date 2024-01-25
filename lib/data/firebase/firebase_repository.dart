@@ -6,35 +6,39 @@ import 'package:flix_id/domain/entities/result.dart';
 import 'package:flix_id/domain/entities/user.dart';
 
 class FirebaseUserRepository implements UserRepository {
-final FirebaseFirestore _firebaseFirestore;
+  final FirebaseFirestore _firebaseFirestore;
 
-FirebaseUserRepository({FirebaseFirestore? firebaseFirestore})
-    : _firebaseFirestore =
-          firebaseFirestore ?? FirebaseFirestore.instance;
+  FirebaseUserRepository({FirebaseFirestore? firebaseFirestore})
+      : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<Result<User>> createUser({required String uid, required String email, required String name, String? photoUrl, int balance = 0}) {
+  Future<Result<User>> createUser(
+      {required String uid,
+      required String email,
+      required String name,
+      String? photoUrl,
+      int balance = 0}) {
     // TODO: implement createUser
     throw UnimplementedError();
   }
 
   @override
   Future<Result<User>> getUser({required String uid}) async {
-    DocumentReference<Map<String, dynamic>> documentReference = 
-    _firebaseFirestore.doc('users/%uid');
+    DocumentReference<Map<String, dynamic>> documentReference =
+        _firebaseFirestore.doc('users/$uid');
 
-    DocumentSnapshot<Map<String, dynamic>> result = 
-    await documentReference.get(); 
+    DocumentSnapshot<Map<String, dynamic>> result =
+        await documentReference.get();
 
     if (result.exists) {
       return Result.success(User.fromJson(result.data()!));
     } else {
-      return Result.failed('user not found');
+      return const Result.failed('User not found');
     }
   }
 
   @override
-  Future<Result<User>> getUserBalance({required String uid}) {
+  Future<Result<int>> getUserBalance({required String uid}) {
     // TODO: implement getUserBalance
     throw UnimplementedError();
   }
@@ -46,14 +50,16 @@ FirebaseUserRepository({FirebaseFirestore? firebaseFirestore})
   }
 
   @override
-  Future<Result<User>> updateUserBalance({required String uid, required int balance}) {
+  Future<Result<User>> updateUserBalance(
+      {required String uid, required int balance}) {
     // TODO: implement updateUserBalance
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<User>> uploadProfilePicture({required User user, required File imageFile}) {
+  Future<Result<User>> uploadProfilePicture(
+      {required User user, required File imageFile}) {
     // TODO: implement uploadProfilePicture
     throw UnimplementedError();
   }
- }
+}

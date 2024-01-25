@@ -21,7 +21,7 @@ const LoginPage({ Key? key }) : super(key: key);
             authentication: FirebaseAuthentication(),
             userRepository: FirebaseUserRepository());
 
-            login(LoginParams(email: 'email', password: 'password'))
+            login(LoginParams(email: 'faishalyb@gmail.com', password: '123123'))
             .then((result) {
               if (result.isSuccess) {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage(user: result.resultValue!),
