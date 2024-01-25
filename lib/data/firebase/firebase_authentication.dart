@@ -2,8 +2,6 @@ import 'package:flix_id/data/repositories/authentication.dart';
 import 'package:flix_id/domain/entities/result.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-
-
 class FirebaseAuthentication implements Authentication {
   final firebase_auth.FirebaseAuth _firebaseAuth;
 
