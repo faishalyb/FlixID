@@ -12,6 +12,7 @@ class DummyAuthentication implements Authentication {
   Future<Result<String>> login({required String email, required String password}) async{
     await Future.delayed(Duration(seconds: 1));
     return Result.success('ID-12345');
+    // return Result.failed('Gagal Login!');
   }
 
   @override
