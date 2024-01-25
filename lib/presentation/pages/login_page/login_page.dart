@@ -1,7 +1,7 @@
 // import 'package:flix_id/data/dummies/dummy_authentication.dart';
 // import 'package:flix_id/data/dummies/dummy_user_repository.dart';
-import 'package:flix_id/data/firebase/firebase_authentication.dart';
-import 'package:flix_id/data/firebase/firebase_user_repository.dart';
+// import 'package:flix_id/data/firebase/firebase_authentication.dart';
+// import 'package:flix_id/data/firebase/firebase_user_repository.dart';
 import 'package:flix_id/domain/usecases/login/login.dart';
 import 'package:flix_id/presentation/pages/main_page/main_page.dart';
 import 'package:flix_id/presentation/providers/usecases/login_provider.dart';
@@ -20,7 +20,7 @@ const LoginPage({ Key? key }) : super(key: key);
       body: Center(
         child: ElevatedButton(onPressed: (){
           Login login = ref.watch(loginProvider);
-          
+
             login(LoginParams(email: 'faishalyb@gmail.com', password: '123123'))
             .then((result) {
               if (result.isSuccess) {
