@@ -17,9 +17,27 @@ class FirebaseUserRepository implements UserRepository {
       required String email,
       required String name,
       String? photoUrl,
-      int balance = 0}) {
-    // TODO: implement createUser
-    throw UnimplementedError();
+      int balance = 0}) async {
+    CollectionReference<Map<String, dynamic>> users =
+      _firebaseFirestore.collection('users');
+
+      await users.doc(uid).set({
+        'uid' : uid,
+        'email' : email,
+        'name' : name,
+        'photoUrl' : photoUrl,
+        'balance' : balance
+      });
+
+      DocumentSnapshot<Map<String, dynamic>> result = 
+        await users.doc(uid).get();
+
+      if (result.exists){
+        return Result.success(User.fromJson(result.data()!));
+      }
+      else {
+        return const Result.failed('failed to create user data!');
+      }
   }
 
   @override
@@ -38,22 +56,71 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  Future<Result<int>> getUserBalance({required String uid}) {
-    // TODO: implement getUserBalance
-    throw UnimplementedError();
+  Future<Result<int>> getUserBalance({required String uid}) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+     _firebaseFirestore.doc('users/${uid}');
+    DocumentSnapshot<Map<String, dynamic>> result = 
+      await documentReference.get();
+
+    if (result.exists){
+      return Result.success(result.data()!['balance']);
+    } else {
+      return  const Result.failed('User not found!');
+    }
   }
 
   @override
-  Future<Result<User>> updateUser({required User user}) {
-    // TODO: implement updateUser
-    throw UnimplementedError();
+  Future<Result<User>> updateUser({required User user}) async {
+    try {DocumentReference<Map<String, dynamic>> documentReference = 
+      _firebaseFirestore.doc('users/${user.uid}');
+    await documentReference.update(user.toJson());
+
+    DocumentSnapshot<Map<String, dynamic>> result = 
+      await documentReference.get();
+
+    if (result.exists) {
+      User updatedUser = User.fromJson(result.data()!);
+      if (updatedUser == user){
+        return Result.success(updatedUser);
+      } else {
+        return const Result.failed('Failed to update user data!');
+      }
+    } else {
+      return const Result.failed('Failed to update user data!');
+    }}
+    on FirebaseException catch(e) {
+      return Result.failed(e.message ?? 'Failed to update user data!');
+    }
   }
 
   @override
   Future<Result<User>> updateUserBalance(
-      {required String uid, required int balance}) {
-    // TODO: implement updateUserBalance
-    throw UnimplementedError();
+      {required String uid, required int balance}) async{
+     DocumentReference<Map<String, dynamic>> documentReference = 
+      _firebaseFirestore.doc('users/$uid');
+    DocumentSnapshot<Map<String, dynamic>> result = 
+      await documentReference.get();
+     
+    if (result.exists) {
+      await documentReference.update({'balance':balance});
+
+      DocumentSnapshot<Map<String, dynamic>> updatedResult = await documentReference.get();
+
+      if (updatedResult.exists) {
+        User updatedUser = User.fromJson(updatedResult.data()!);
+        if (updatedUser.balance == balance) {
+          return Result.success(updatedUser);
+        } else {
+          return const Result.failed('Failed to update user balance!');
+        }
+      } else {
+        return const Result.failed('Failed to retrieve user balance!');
+      }
+    } else {
+      return const Result.failed('Failed to update user balance!'); 
+    }
+
+
   }
 
   @override
