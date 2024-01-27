@@ -31,7 +31,7 @@ mixin _$Transaction {
   int? get ticketAmount => throw _privateConstructorUsedError;
   int? get ticketPrice => throw _privateConstructorUsedError;
   int get adminFee => throw _privateConstructorUsedError;
-  int get totalPrice => throw _privateConstructorUsedError;
+  int get total => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +57,7 @@ abstract class $TransactionCopyWith<$Res> {
       int? ticketAmount,
       int? ticketPrice,
       int adminFee,
-      int totalPrice});
+      int total});
 }
 
 /// @nodoc
@@ -84,7 +84,7 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     Object? ticketAmount = freezed,
     Object? ticketPrice = freezed,
     Object? adminFee = null,
-    Object? totalPrice = null,
+    Object? total = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -131,9 +131,9 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.adminFee
           : adminFee // ignore: cast_nullable_to_non_nullable
               as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -159,7 +159,7 @@ abstract class _$$TransactionImplCopyWith<$Res>
       int? ticketAmount,
       int? ticketPrice,
       int adminFee,
-      int totalPrice});
+      int total});
 }
 
 /// @nodoc
@@ -184,7 +184,7 @@ class __$$TransactionImplCopyWithImpl<$Res>
     Object? ticketAmount = freezed,
     Object? ticketPrice = freezed,
     Object? adminFee = null,
-    Object? totalPrice = null,
+    Object? total = null,
   }) {
     return _then(_$TransactionImpl(
       id: freezed == id
@@ -231,9 +231,9 @@ class __$$TransactionImplCopyWithImpl<$Res>
           ? _value.adminFee
           : adminFee // ignore: cast_nullable_to_non_nullable
               as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
+      total: null == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -242,7 +242,7 @@ class __$$TransactionImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TransactionImpl implements _Transaction {
-  _$TransactionImpl(
+  const _$TransactionImpl(
       {this.id,
       required this.uid,
       this.transactionTime,
@@ -254,7 +254,7 @@ class _$TransactionImpl implements _Transaction {
       this.ticketAmount,
       this.ticketPrice,
       required this.adminFee,
-      required this.totalPrice})
+      required this.total})
       : _seats = seats;
 
   factory _$TransactionImpl.fromJson(Map<String, dynamic> json) =>
@@ -290,11 +290,11 @@ class _$TransactionImpl implements _Transaction {
   @override
   final int adminFee;
   @override
-  final int totalPrice;
+  final int total;
 
   @override
   String toString() {
-    return 'Transaction(id: $id, uid: $uid, transactionTime: $transactionTime, transactionImage: $transactionImage, title: $title, seats: $seats, theatername: $theatername, watchingtime: $watchingtime, ticketAmount: $ticketAmount, ticketPrice: $ticketPrice, adminFee: $adminFee, totalPrice: $totalPrice)';
+    return 'Transaction(id: $id, uid: $uid, transactionTime: $transactionTime, transactionImage: $transactionImage, title: $title, seats: $seats, theatername: $theatername, watchingtime: $watchingtime, ticketAmount: $ticketAmount, ticketPrice: $ticketPrice, adminFee: $adminFee, total: $total)';
   }
 
   @override
@@ -320,8 +320,7 @@ class _$TransactionImpl implements _Transaction {
                 other.ticketPrice == ticketPrice) &&
             (identical(other.adminFee, adminFee) ||
                 other.adminFee == adminFee) &&
-            (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice));
+            (identical(other.total, total) || other.total == total));
   }
 
   @JsonKey(ignore: true)
@@ -339,7 +338,7 @@ class _$TransactionImpl implements _Transaction {
       ticketAmount,
       ticketPrice,
       adminFee,
-      totalPrice);
+      total);
 
   @JsonKey(ignore: true)
   @override
@@ -356,7 +355,7 @@ class _$TransactionImpl implements _Transaction {
 }
 
 abstract class _Transaction implements Transaction {
-  factory _Transaction(
+  const factory _Transaction(
       {final String? id,
       required final String uid,
       final int? transactionTime,
@@ -368,7 +367,7 @@ abstract class _Transaction implements Transaction {
       final int? ticketAmount,
       final int? ticketPrice,
       required final int adminFee,
-      required final int totalPrice}) = _$TransactionImpl;
+      required final int total}) = _$TransactionImpl;
 
   factory _Transaction.fromJson(Map<String, dynamic> json) =
       _$TransactionImpl.fromJson;
@@ -396,7 +395,7 @@ abstract class _Transaction implements Transaction {
   @override
   int get adminFee;
   @override
-  int get totalPrice;
+  int get total;
   @override
   @JsonKey(ignore: true)
   _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>

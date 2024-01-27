@@ -5,22 +5,19 @@ part 'transaction.g.dart';
 
 @freezed
 class Transaction with _$Transaction {
-
-  factory Transaction({
+  const factory Transaction({
     String? id,
     required String uid,
     int? transactionTime,
     String? transactionImage,
     required String title,
-    @Default([]) List <String> seats,
+    @Default([]) List<String> seats,
     String? theatername,
     int? watchingtime,
     int? ticketAmount,
     int? ticketPrice,
     required int adminFee,
-    required int totalPrice,
-
-
+    required int total,
   }) = _Transaction;
 
   factory Transaction.fromJson(Map<String, dynamic> json) => _$TransactionFromJson(json);
