@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flix_id/domain/entities/result.dart';
 import 'package:flix_id/domain/entities/user.dart';
 import 'package:flix_id/domain/usecases/get_logged_in_user/get_logged_in_user.dart';
@@ -67,6 +65,16 @@ class UserData extends _$UserData {
 
       case Failed(:final message):
         state = AsyncError(FlutterError(message), StackTrace.current);
+    }
+  }
+
+  Future<void> refreshUserData() async {
+    GetLoggedInUser getLoggedInUser = ref.read(getLoggedInUserProvider);
+
+    var result = await getLoggedInUser(null);
+
+    if (result case Success(value: final user)) {
+      state = AsyncData(user);
     }
   }
 
