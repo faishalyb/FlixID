@@ -8,6 +8,7 @@ import 'package:flix_id/presentation/providers/movie/now_playing_provider.dart';
 import 'package:flix_id/presentation/providers/movie/upcoming_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/get_logged_in_user_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/login_provider.dart';
+import 'package:flix_id/presentation/providers/usecases/logout_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/register_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -75,6 +76,20 @@ class UserData extends _$UserData {
 
     if (result case Success(value: final user)) {
       state = AsyncData(user);
+    }
+  }
+
+  Future<void> logout() async {
+    var logout = ref.read(logoutProvider);
+    var result = await logout(null);
+
+    switch (result) {
+      case Success(value: _):
+        state = const AsyncData(null);
+
+      case Failed(:final message):
+        state = AsyncError(FlutterError(message), StackTrace.current);
+        state = AsyncData(state.valueOrNull);
     }
   }
 
