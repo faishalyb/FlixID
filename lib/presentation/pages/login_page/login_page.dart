@@ -9,32 +9,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
-const LoginPage({ Key? key }) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref){
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page')
-        ),
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Login login = ref.watch(loginProvider);
-
-            login(LoginParams(email: 'faishalyb@gmail.com', password: '123123'))
-            .then((result) {
-              if (result.isSuccess) {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage(user: result.resultValue!),
-                ));
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(result.errorMessage!),
-                  ));
-              }
-            }
-            );
-        }, child: Text('Login')),
+      // appBar: AppBar(title: const Text('Main Page')),
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/images/baground_register 1.png',
+            width: 279,
+          )
+        ],
       ),
+      // body: Center(
+      //   child: ElevatedButton(
+      //       onPressed: () {
+      //         Login login = ref.watch(loginProvider);
+
+      //         login(LoginParams(
+      //                 email: 'faishalyb@gmail.com', password: '123123'))
+      //             .then((result) {
+      //           if (result.isSuccess) {
+      //             Navigator.of(context).push(MaterialPageRoute(
+      //               builder: (context) => MainPage(user: result.resultValue!),
+      //             ));
+      //           } else {
+      //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      //               content: Text(result.errorMessage!),
+      //             ));
+      //           }
+      //         });
+      //       },
+      //       child: Text('Login')),
+      // ),
     );
   }
 }
