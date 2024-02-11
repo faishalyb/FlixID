@@ -12,6 +12,7 @@ import 'package:flix_id/domain/usecases/upload_profile_picture/upload_profile_pi
 import 'package:flix_id/domain/usecases/upload_profile_picture/upload_profile_picture_param.dart';
 import 'package:flix_id/presentation/providers/movie/now_playing_provider.dart';
 import 'package:flix_id/presentation/providers/movie/upcoming_provider.dart';
+import 'package:flix_id/presentation/providers/transaction_data/transaction_data_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/get_logged_in_user_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/login_provider.dart';
 import 'package:flix_id/presentation/providers/usecases/logout_provider.dart';
@@ -110,7 +111,7 @@ class UserData extends _$UserData {
 
       if (result.isSuccess) {
         refreshUserData();
-        // TODO: Refresh Transaction Data
+        ref.read(transactionDataProvider.notifier).refreshTransactionData();
       }
     }
   }
