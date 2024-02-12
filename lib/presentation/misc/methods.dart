@@ -11,3 +11,11 @@ SizedBox verticalSpaces(double, height) {
   }
   return _verticalSpaces[height]!;
 }
+
+SizedBox horizontalSpaces(double, width) {
+  if (!_horizontalSpaces.containsKey(width)) {
+    _horizontalSpaces[width] = SizedBox(width: width);
+  }
+
+  return _horizontalSpaces[width]!;
+}
