@@ -26,20 +26,23 @@ class LoginPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Main Page')),
-      body: Column(
-        children: [
-          FlixTextField(
-            labelText: 'email',
-            controller: emailController,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                ref
-                    .read(userDataProvider.notifier)
-                    .login(email: 'faishalyb@gmail.com', password: '123123');
-              },
-              child: Text('Login')),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
+        child: Column(
+          children: [
+            FlixTextField(
+              labelText: 'email',
+              controller: emailController,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  ref
+                      .read(userDataProvider.notifier)
+                      .login(email: 'faishalyb@gmail.com', password: '123123');
+                },
+                child: Text('Login')),
+          ],
+        ),
       ),
     );
   }
