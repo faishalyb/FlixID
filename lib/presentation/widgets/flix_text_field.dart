@@ -1,3 +1,4 @@
+import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flutter/material.dart';
 
 class FlixTextField extends StatelessWidget {
@@ -13,6 +14,11 @@ class FlixTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return TextField(
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+          labelText: labelText, labelStyle: const TextStyle(color: ghostWhite)),
+    );
   }
 }
