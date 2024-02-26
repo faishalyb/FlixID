@@ -1,5 +1,4 @@
 import 'package:flix_id/presentation/extensions/build_context_extensions.dart';
-import 'package:flix_id/presentation/misc/methods.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_id/presentation/widgets/flix_text_field.dart';
@@ -96,7 +95,9 @@ class LoginPage extends ConsumerWidget {
                   children: [
                     const Text("Don't have an Account?"),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          ref.read(routerProvider).goNamed('register');
+                        },
                         child: Text(
                           'Register here',
                           style: TextStyle(fontWeight: FontWeight.bold),
