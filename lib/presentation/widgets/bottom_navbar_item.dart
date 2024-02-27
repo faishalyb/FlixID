@@ -17,6 +17,19 @@ class BottomNavbarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 25,
+          height: 25,
+          child: Image.asset(isSelected ? selectedImage : image),
+        ),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
+        )
+      ],
+    );
   }
 }
