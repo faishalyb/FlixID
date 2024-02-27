@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flix_id/presentation/extensions/build_context_extensions.dart';
+import 'package:flix_id/presentation/pages/profile_page/profile_page.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_id/presentation/widgets/bottom_navbar.dart';
@@ -41,9 +41,7 @@ class _MainPageState extends ConsumerState<MainPage> {
               Center(
                 child: Text('Ticket Page'),
               ),
-              Center(
-                child: Text('Profile Page'),
-              ),
+              Center(child: ProfilePage()),
             ],
           ),
           BottomNavbar(
