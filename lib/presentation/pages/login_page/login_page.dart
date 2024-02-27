@@ -28,14 +28,14 @@ class LoginPage extends ConsumerWidget {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
           Center(
             child: Image.asset(
               'assets/images/flix_logo.png',
               width: 150,
             ),
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
@@ -45,7 +45,7 @@ class LoginPage extends ConsumerWidget {
                   labelText: 'email',
                   controller: emailController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 FlixTextField(
@@ -62,7 +62,7 @@ class LoginPage extends ConsumerWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 switch (ref.watch(userDataProvider)) {
@@ -87,7 +87,7 @@ class LoginPage extends ConsumerWidget {
                       child: CircularProgressIndicator(),
                     )
                 },
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Row(
@@ -98,7 +98,7 @@ class LoginPage extends ConsumerWidget {
                         onPressed: () {
                           ref.read(routerProvider).goNamed('register');
                         },
-                        child: Text(
+                        child: const Text(
                           'Register here',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ))
