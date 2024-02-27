@@ -15,6 +15,8 @@ class MainPage extends ConsumerStatefulWidget {
 }
 
 class _MainPageState extends ConsumerState<MainPage> {
+  PageController pageController = PageController();
+  int selectedPage = 0;
   @override
   Widget build(BuildContext context) {
     ref.listen(userDataProvider, (previous, next) {
@@ -25,47 +27,53 @@ class _MainPageState extends ConsumerState<MainPage> {
       }
     });
     return Scaffold(
-      appBar: AppBar(title: const Text('Main Page')),
       body: Stack(
         children: [
-          Center(
-            child: Column(
-              children: [
-                Text(ref.watch(userDataProvider).when(
-                    data: (data) => data.toString(),
-                    error: (error, StackTrace) => '',
-                    loading: () => 'Loading')),
-                ElevatedButton(
-                    onPressed: () {
-                      ref.read(userDataProvider.notifier).logout();
-                    },
-                    child: Text('Logout')),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
-            ),
+          PageView(
+            controller: pageController,
+            onPageChanged: (value) => setState(() {
+              selectedPage = value;
+            }),
+            children: [
+              Center(
+                child: Text('Movies Page'),
+              ),
+              Center(
+                child: Text('Ticket Page'),
+              ),
+              Center(
+                child: Text('Profile Page'),
+              ),
+            ],
           ),
-          BottomNavbar(items: [
-            BottomNavbarItem(
-                index: 0,
-                isSelected: false,
-                title: 'Home',
-                image: 'assets/images/movie.png',
-                selectedImage: 'assets/images/movie-selected.png'),
-            BottomNavbarItem(
-                index: 0,
-                isSelected: false,
-                title: 'Ticket',
-                image: 'assets/images/ticket.png',
-                selectedImage: 'assets/images/ticket-selected.png'),
-            BottomNavbarItem(
-                index: 0,
-                isSelected: false,
-                title: 'Profile',
-                image: 'assets/images/profile.png',
-                selectedImage: 'assets/images/profile-selected.png')
-          ], onTap: (index) {}, selectedIndex: 0)
+          BottomNavbar(
+              items: [
+                BottomNavbarItem(
+                    index: 0,
+                    isSelected: selectedPage == 0,
+                    title: 'Home',
+                    image: 'assets/images/movie.png',
+                    selectedImage: 'assets/images/movie-selected.png'),
+                BottomNavbarItem(
+                    index: 1,
+                    isSelected: selectedPage == 1,
+                    title: 'Ticket',
+                    image: 'assets/images/ticket.png',
+                    selectedImage: 'assets/images/ticket-selected.png'),
+                BottomNavbarItem(
+                    index: 2,
+                    isSelected: selectedPage == 2,
+                    title: 'Profile',
+                    image: 'assets/images/profile.png',
+                    selectedImage: 'assets/images/profile-selected.png'),
+              ],
+              onTap: (index) {
+                selectedPage = index;
+                pageController.animateToPage(selectedPage,
+                    duration: const Duration(microseconds: 200),
+                    curve: Curves.easeInOut);
+              },
+              selectedIndex: 0)
         ],
       ),
     );
