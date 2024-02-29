@@ -1,3 +1,4 @@
+import 'package:flix_id/presentation/extensions/int_extensions.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,6 +33,35 @@ Widget userInfo(WidgetRef ref) => Padding(
                       error: (error, stackTrace) => '',
                       loading: () => 'Loading...',
                     )}!',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "Let's book your favorite movie now!",
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: 5),
+              GestureDetector(
+                onTap: () {
+                  // Go to Wallet Page
+                },
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: Image.asset('assets/images/wallet.png'),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      ref.watch(userDataProvider).when(
+                          data: (user) =>
+                              (user?.balance ?? 0).toIDRCurrencyFormat(),
+                          error: (error, stackTrace) => 'IDR 0',
+                          loading: () => 'Loading...'),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               )
             ],
           )
