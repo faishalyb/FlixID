@@ -1,6 +1,8 @@
 import 'package:flix_id/presentation/pages/movie_page/methods/movie_list.dart';
+import 'package:flix_id/presentation/pages/movie_page/methods/promotion_list.dart';
 import 'package:flix_id/presentation/pages/movie_page/methods/search_bar.dart';
 import 'package:flix_id/presentation/providers/movie/now_playing_provider.dart';
+import 'package:flix_id/presentation/providers/movie/upcoming_provider.dart';
 import 'package:flutter/material.dart';
 import 'methods/user_info.dart';
 
@@ -29,6 +31,10 @@ class MoviePage extends ConsumerWidget {
                   // Move to movie detail page
                 }),
             ...promotionList(promotionImageFileNames),
+            ...movieList(
+              title: 'Upcoming',
+              movies: ref.watch(upcomingProvider),
+            ),
           ],
         )
       ],
