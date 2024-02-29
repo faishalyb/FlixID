@@ -18,5 +18,22 @@ Widget searchBar(BuildContext context) => Row(
                 icon: Icon(Icons.search)),
           ),
         ),
+        SizedBox(
+          width: 80,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Center(
+              child: Icon(Icons.search),
+            ),
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
