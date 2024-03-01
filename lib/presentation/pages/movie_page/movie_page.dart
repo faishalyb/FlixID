@@ -1,4 +1,3 @@
-import 'package:flix_id/presentation/misc/methods.dart';
 import 'package:flix_id/presentation/pages/movie_page/methods/movie_list.dart';
 import 'package:flix_id/presentation/providers/movie/now_playing_provider.dart';
 import 'package:flix_id/presentation/providers/movie/upcoming_provider.dart';
@@ -12,8 +11,8 @@ import 'methods/user_info.dart';
 
 class MoviePage extends ConsumerWidget {
   final List<String> promotionImageFileNames = const [
-    'popcorn.jpg',
-    'buy1get1.jpg'
+    'images/popcorn.jpg',
+    'images/buy1get1.jpg'
   ];
 
   const MoviePage({super.key});

@@ -185,7 +185,7 @@ class __$$MovieDetailImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MovieDetailImpl implements _MovieDetail {
-  _$MovieDetailImpl(
+  const _$MovieDetailImpl(
       {required this.id,
       required this.title,
       this.posterPath,
@@ -262,7 +262,7 @@ class _$MovieDetailImpl implements _MovieDetail {
 }
 
 abstract class _MovieDetail implements MovieDetail {
-  factory _MovieDetail(
+  const factory _MovieDetail(
       {required final int id,
       required final String title,
       final String? posterPath,

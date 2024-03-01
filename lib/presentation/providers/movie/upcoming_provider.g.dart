@@ -6,7 +6,7 @@ part of 'upcoming_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$upcomingHash() => r'e96b35a36f3a8545921d2f32fda02f0441706896';
+String _$upcomingHash() => r'66221118a9592e7b1c18ae24b920136a6194aaba';
 
 /// See also [Upcoming].
 @ProviderFor(Upcoming)

@@ -111,7 +111,7 @@ class __$$MovieImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MovieImpl implements _Movie {
-  _$MovieImpl({required this.id, required this.title, this.posterPath});
+  const _$MovieImpl({required this.id, required this.title, this.posterPath});
 
   @override
   final int id;
@@ -147,7 +147,7 @@ class _$MovieImpl implements _Movie {
 }
 
 abstract class _Movie implements Movie {
-  factory _Movie(
+  const factory _Movie(
       {required final int id,
       required final String title,
       final String? posterPath}) = _$MovieImpl;
