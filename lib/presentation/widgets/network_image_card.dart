@@ -36,10 +36,11 @@ class NetworkImageCard extends StatelessWidget {
                 ),
               if (imageUrl != null)
                 Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(borderRadius),
-                        image: DecorationImage(
-                            image: NetworkImage(imageUrl!), fit: fit))),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(borderRadius),
+                      image: DecorationImage(
+                          image: NetworkImage(imageUrl!), fit: fit)),
+                )
             ],
           ),
         ));

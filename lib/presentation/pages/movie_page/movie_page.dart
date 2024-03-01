@@ -23,7 +23,9 @@ class MoviePage extends ConsumerWidget {
         Column(
           children: [
             userInfo(ref),
+            SizedBox(height: 40),
             searchBar(context),
+            SizedBox(height: 24),
             ...movieList(
                 title: 'Now Playing',
                 movies: ref.watch(nowPlayingProvider),
