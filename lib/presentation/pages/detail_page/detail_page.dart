@@ -1,4 +1,5 @@
 import 'package:flix_id/domain/entities/movie.dart';
+import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/background.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/widgets/back_navigation_bar.dart';
@@ -15,17 +16,43 @@ class DetailPage extends ConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
-          ...background(),
+          ...background(movie),
           ListView(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackNavigationBar(
-                    movie.title,
-                    onTap: () => ref.read(routerProvider).pop(),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BackNavigationBar(
+                      movie.title,
+                      onTap: () => ref.read(routerProvider).pop(),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    // backdrop
+                    SizedBox(height: 24),
+                    // ...movieShortInfo(),
+                    SizedBox(height: 20),
+                    // ...movieOverview(),
+                    SizedBox(height: 40),
+                  ],
+                ),
+              ),
+              // ...castAndCrew(),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Book this movie'),
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: backgroundColor,
+                      backgroundColor: saffron,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
               )
             ],
           )
