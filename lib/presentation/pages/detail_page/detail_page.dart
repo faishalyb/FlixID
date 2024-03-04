@@ -1,8 +1,10 @@
 import 'package:flix_id/domain/entities/movie.dart';
 import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/background.dart';
+import 'package:flix_id/presentation/providers/movie/movie_detail_provider.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/widgets/back_navigation_bar.dart';
+import 'package:flix_id/presentation/widgets/network_image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +15,7 @@ class DetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var asyncMovieDetail = ref.watch(movieDetailProvider(movie: movie));
     return Scaffold(
       body: Stack(
         children: [
@@ -31,7 +34,15 @@ class DetailPage extends ConsumerWidget {
                     SizedBox(
                       height: 24,
                     ),
-                    // backdrop
+                    NetworkImageCard(
+                      width: MediaQuery.of(context).size.width - 48,
+                      height: (MediaQuery.of(context).size.width - 48) * 0.6,
+                      borderRadius: 15,
+                      imageUrl: asyncMovieDetail.valueOrNull != null
+                          ? 'https://image.tmdb.org/t/p/w500${asyncMovieDetail.value!.backdropPath ?? movie.posterPath}'
+                          : null,
+                      fit: BoxFit.cover,
+                    ),
                     SizedBox(height: 24),
                     // ...movieShortInfo(),
                     SizedBox(height: 20),
