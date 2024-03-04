@@ -2,7 +2,6 @@ import 'package:flix_id/presentation/pages/movie_page/methods/movie_list.dart';
 import 'package:flix_id/presentation/providers/movie/now_playing_provider.dart';
 import 'package:flix_id/presentation/providers/movie/upcoming_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'methods/promotion_list.dart';
