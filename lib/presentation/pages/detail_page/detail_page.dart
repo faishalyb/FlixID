@@ -1,6 +1,7 @@
 import 'package:flix_id/domain/entities/movie.dart';
 import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/background.dart';
+import 'package:flix_id/presentation/pages/detail_page/methods/movie_short_info.dart';
 import 'package:flix_id/presentation/providers/movie/movie_detail_provider.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/widgets/back_navigation_bar.dart';
@@ -44,7 +45,8 @@ class DetailPage extends ConsumerWidget {
                       fit: BoxFit.cover,
                     ),
                     SizedBox(height: 24),
-                    // ...movieShortInfo(),
+                    ...movieShortInfo(
+                        asyncMovieDetail: asyncMovieDetail, context: context),
                     SizedBox(height: 20),
                     // ...movieOverview(),
                     SizedBox(height: 40),
