@@ -1,6 +1,7 @@
 import 'package:flix_id/domain/entities/movie.dart';
 import 'package:flix_id/presentation/misc/constants.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/background.dart';
+import 'package:flix_id/presentation/pages/detail_page/methods/cast_and_crew.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/movie_overview.dart';
 import 'package:flix_id/presentation/pages/detail_page/methods/movie_short_info.dart';
 import 'package:flix_id/presentation/providers/movie/movie_detail_provider.dart';
@@ -54,7 +55,7 @@ class DetailPage extends ConsumerWidget {
                   ],
                 ),
               ),
-              // ...castAndCrew(),
+              ...castAndCrew(movie: movie, ref: ref),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
