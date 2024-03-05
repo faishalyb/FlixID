@@ -25,7 +25,7 @@ List<Widget> movieShortInfo({
               '${asyncMovieDetail.when(
                 data: (movieDetail) =>
                     movieDetail != null ? movieDetail.runtime : '-',
-                error: (error, stackTrace) => '- ',
+                error: (error, stackTrace) => '-',
                 loading: () => '-',
               )} minutes',
               style: const TextStyle(fontSize: 12),
@@ -35,7 +35,33 @@ List<Widget> movieShortInfo({
             width: 14,
             height: 14,
             child: Image.asset('assets/images/genre.png'),
-          )
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          SizedBox(
+            width:
+                MediaQuery.of(context).size.width - 48 - 95 - 14 - 14 - 5 - 5,
+            child: asyncMovieDetail.when(
+                data: (movieDetail) {
+                  String genres = movieDetail?.genres.join(', ') ?? '-';
+
+                  return Text(
+                    genres,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 12),
+                  );
+                },
+                error: (error, stackTrace) => const Text(
+                      '-',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                loading: () => const Text(
+                      '-',
+                      style: TextStyle(fontSize: 12),
+                    )),
+          ),
         ],
       )
     ];
