@@ -1,5 +1,4 @@
 import 'package:flix_id/domain/entities/movie_detail.dart';
-import 'package:flix_id/presentation/providers/movie/movie_detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,6 +61,25 @@ List<Widget> movieShortInfo({
                       style: TextStyle(fontSize: 12),
                     )),
           ),
+        ],
+      ),
+      SizedBox(
+        height: 20,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 18,
+            width: 18,
+            child: Image.asset('assets/images/star.png'),
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Text((asyncMovieDetail.valueOrNull?.voteAverage ?? 0)
+              .toStringAsFixed(1))
         ],
       )
     ];
