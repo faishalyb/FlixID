@@ -9,8 +9,10 @@ List<Widget> movieOverview(AsyncValue<MovieDetail?> asyncMovieDetail) => [
       ),
       SizedBox(height: 10),
       asyncMovieDetail.when(
-          data: (movieDetail) =>
-              Text(movieDetail != null ? movieDetail.overview : '-'),
+          data: (movieDetail) => Text(
+                movieDetail != null ? movieDetail.overview : '-',
+                textAlign: TextAlign.justify,
+              ),
           error: (error, stackTrace) => const Text(
               "failed to load movie's overview, Please try again later"),
           loading: () => const CircularProgressIndicator()),
