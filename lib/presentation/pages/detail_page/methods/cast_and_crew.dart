@@ -53,7 +53,7 @@ List<Widget> castAndCrew({
                               ),
                             ))) ??
                 []),
-            SizedBox(width: 24)
+            SizedBox(width: 14)
           ],
         ),
       ),
