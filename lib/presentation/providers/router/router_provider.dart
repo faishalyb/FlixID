@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flix_id/domain/entities/movie.dart';
 import 'package:flix_id/domain/entities/movie_detail.dart';
 import 'package:flix_id/presentation/pages/detail_page/detail_page.dart';
@@ -15,7 +17,9 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: '/main',
         name: 'main',
-        builder: (context, state) => MainPage(),
+        builder: (context, state) => MainPage(
+          imageFile: state.extra != null ? state.extra as File : null,
+        ),
       ),
       GoRoute(
         path: '/login',
